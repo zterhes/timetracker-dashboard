@@ -9,6 +9,7 @@ export const theme = {
   media: {
     desktop: breakpoints.desktop,
   },
+  borderRadius: "20px",
   colors: {
     primary: {
       blue: "hsl(246, 80%, 60%)",
