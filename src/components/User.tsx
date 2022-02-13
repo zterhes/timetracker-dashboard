@@ -1,5 +1,8 @@
 import React from "react";
 import { styled } from "../theme";
+import Button from "./Button";
+import Container from "./Container";
+import Typography from "./Typography";
 
 interface Props {
   imgSrc: string;
@@ -9,22 +12,34 @@ interface Props {
 const ComponentWrapper = styled.div`
   background-color: ${(props) => props.theme.colors.neutral.darkBlue};
   border-radius: ${(props) => props.theme.borderRadius};
+
+  ${(props) => props.theme.media.desktop} {
+    display: grid;
+    grid-template-rows: auto max-content;
+  }
 `;
 
-const ProfileWrapper = styled.div`
+const ProfileWrapper = styled(Container)`
   display: flex;
-  justify-content: center;
   align-items: center;
   background-color: ${(props) => props.theme.colors.primary.blue};
   border-radius: ${(props) => props.theme.borderRadius};
-  color: white;
-  padding: 15px 25px;
+
+  ${(props) => props.theme.media.desktop} {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 `;
 
-const TimeframeSelectorWrapper = styled.div`
+const TimeframeSelectorWrapper = styled(Container)`
   display: flex;
   justify-content: space-evenly;
-  color: white;
+
+  ${(props) => props.theme.media.desktop} {
+    display: grid;
+    justify-content: flex-start;
+    row-gap: 25px;
+  }
 `;
 
 const ProfileImg = styled.img`
@@ -33,11 +48,17 @@ const ProfileImg = styled.img`
   width: 70px;
   border: 5px solid white;
   margin-right: 25px;
+
+  ${(props) => props.theme.media.desktop} {
+    margin-bottom: 30px;
+    margin-right: 0;
+  }
 `;
 
 const NameDiv = styled.div`
   h2 {
     font-weight: ${(props) => props.theme.typography.weights.md};
+    color: white;
   }
   p {
     font-weight: ${(props) => props.theme.typography.weights.sm};
@@ -47,6 +68,13 @@ const NameDiv = styled.div`
   p {
     margin: 0;
   }
+`;
+
+const TimeframeSelectorButton = styled(Button)<{ active?: boolean }>`
+  color: ${(props) =>
+    props.active ? "white" : props.theme.colors.primary.blue};
+
+  text-align: left;
 `;
 
 const User: React.FC<Props> = ({ name, imgSrc }) => {
@@ -59,14 +87,14 @@ const User: React.FC<Props> = ({ name, imgSrc }) => {
           title={"Image of " + name}
         />
         <NameDiv>
-          <p>Report for</p>
+          <Typography>Report for</Typography>
           <h2>{name}</h2>
         </NameDiv>
       </ProfileWrapper>
       <TimeframeSelectorWrapper>
-        <p>Daily</p>
-        <p>Weekly</p>
-        <p>Monthly</p>
+        <TimeframeSelectorButton>Daily</TimeframeSelectorButton>
+        <TimeframeSelectorButton active>Weekly</TimeframeSelectorButton>
+        <TimeframeSelectorButton>Monthly</TimeframeSelectorButton>
       </TimeframeSelectorWrapper>
     </ComponentWrapper>
   );

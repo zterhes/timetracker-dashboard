@@ -1,19 +1,12 @@
 import React from "react";
-import { styled } from "./theme";
+import { styled, theme } from "./theme";
 import data from "./constants/data.json";
 import User from "./components/User";
-
-const TestText = styled.p`
-  color: ${(props) => props.theme.colors.primary.lightRedStudy};
-
-  @media (min-width: ${(props) => props.theme.breakpoints.desktop}) {
-    color: ${(props) => props.theme.colors.neutral.darkBlue};
-  }
-`;
+import DataCard from "./components/DataCard";
 
 const Page = styled.div`
   background-color: ${(props) => props.theme.colors.neutral.veryDarkBlue};
-  padding: 25px 5px;
+  padding: 45px 25px;
   min-height: 100vh;
 `;
 
@@ -23,6 +16,11 @@ function DashboardPage() {
       <User
         name={data.userdata.name}
         imgSrc={process.env.PUBLIC_URL + "/images/" + data.userdata.img}
+      />
+      <DataCard
+        bgColor={theme.colors.primary.lightRedWork}
+        icon="work"
+        title="Work"
       />
     </Page>
   );

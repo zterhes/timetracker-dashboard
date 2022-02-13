@@ -1,13 +1,13 @@
 import baseStyled, { ThemedStyledInterface } from "styled-components";
 
 const breakpoints = {
-  desktop: "720px",
+  desktop: "600px",
 };
 
 export const theme = {
   breakpoints,
   media: {
-    desktop: breakpoints.desktop,
+    desktop: `@media only screen and (min-width: ${breakpoints.desktop})`,
   },
   borderRadius: "20px",
   colors: {
