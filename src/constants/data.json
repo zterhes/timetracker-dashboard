@@ -1,11 +1,15 @@
 {
-  "userdata":{
+  "userdata": {
     "name": "Jeremy Robson",
-    "img":"image-jeremy.png"
+    "img": "image-jeremy.png"
   },
-  "timeframes":[
+  "timeframes": [
     {
       "title": "Work",
+      "style": {
+        "icon": "icon-work.svg",
+        "color": "hsl(15, 100%, 70%)"
+      },
       "timeframes": {
         "daily": {
           "current": 5,
@@ -23,6 +27,10 @@
     },
     {
       "title": "Play",
+      "style": {
+        "icon": "icon-play.svg",
+        "color": "hsl(195, 74%, 62%)"
+      },
       "timeframes": {
         "daily": {
           "current": 1,
@@ -40,6 +48,10 @@
     },
     {
       "title": "Study",
+      "style": {
+        "icon": "icon-study.svg",
+        "color": "hsl(348, 100%, 68%)"
+      },
       "timeframes": {
         "daily": {
           "current": 0,
@@ -57,6 +69,10 @@
     },
     {
       "title": "Exercise",
+      "style": {
+        "icon": "icon-exercise.svg",
+        "color": "hsl(145, 58%, 55%)"
+      },
       "timeframes": {
         "daily": {
           "current": 1,
@@ -74,6 +90,10 @@
     },
     {
       "title": "Social",
+      "style": {
+        "icon": "icon-social.svg",
+        "color": "hsl(264, 64%, 52%)"
+      },
       "timeframes": {
         "daily": {
           "current": 1,
@@ -91,6 +111,10 @@
     },
     {
       "title": "Self Care",
+      "style": {
+        "icon": "icon-self-care.svg",
+        "color": "hsl(43, 84%, 65%)"
+      },
       "timeframes": {
         "daily": {
           "current": 0,
