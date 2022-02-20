@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useContext } from "react";
+import TImeframeContext from "../context/TImeframeContext";
 import { styled } from "../theme";
+import TimeFrames, { enumFromStringValue } from "../types/TimeFrames";
 import Button from "./Button";
 import Container from "./Container";
 import Typography from "./Typography";
@@ -78,6 +80,14 @@ const TimeframeSelectorButton = styled(Button)<{ active?: boolean }>`
 `;
 
 const User: React.FC<Props> = ({ name, imgSrc }) => {
+  const context = useContext(TImeframeContext);
+  
+  const clickHandler = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    const value = event.currentTarget.value ? event.currentTarget.value : "daily" ;
+    context.setTimeFrame(value as TimeFrames)
+  };
+  
   return (
     <ComponentWrapper>
       <ProfileWrapper>
@@ -92,9 +102,27 @@ const User: React.FC<Props> = ({ name, imgSrc }) => {
         </NameDiv>
       </ProfileWrapper>
       <TimeframeSelectorWrapper>
-        <TimeframeSelectorButton>Daily</TimeframeSelectorButton>
-        <TimeframeSelectorButton active>Weekly</TimeframeSelectorButton>
-        <TimeframeSelectorButton>Monthly</TimeframeSelectorButton>
+        <TimeframeSelectorButton
+          value={TimeFrames.DAILY}
+          active={context.timeFrame === TimeFrames.DAILY}
+          onClick={clickHandler}
+        >
+          Daily
+        </TimeframeSelectorButton>
+        <TimeframeSelectorButton
+          value={TimeFrames.WEEKLY}
+          active={context.timeFrame === TimeFrames.WEEKLY}
+          onClick={clickHandler}
+        >
+          Weekly
+        </TimeframeSelectorButton>
+        <TimeframeSelectorButton
+          value={TimeFrames.MONTHLY}
+          active={context.timeFrame === TimeFrames.MONTHLY}
+          onClick={clickHandler}
+        >
+          Monthly
+        </TimeframeSelectorButton>
       </TimeframeSelectorWrapper>
     </ComponentWrapper>
   );
